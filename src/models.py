@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -16,6 +16,7 @@ class User(Base):
     last_name = Column(String(200), nullable=False)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False, unique=True)
+    date_created = Column(DateTime())
     bio = Column(String(250), nullable=True)
 
 class Post(Base):
@@ -23,6 +24,7 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     caption = Column(String(250))
     location = Column(String(250))
+    comment = Column(String(250))
     date = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
@@ -35,13 +37,11 @@ class Story(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
-class Location(Base):
-    __tablename__ = 'location'
+class Comment(Base):
+    __tablename__ = 'comment'
     id = Column(Integer, primary_key=True)
-    address = Column(String(250))
-    city = Column(String(250))
-    number_of_posts = Column(Integer)
-    user_id = Column(Integer, ForeignKey('post.id'))
+    text = Column(String(250))
+    post_id = Column(Integer, ForeignKey('post.id'))
     post = relationship(Post)
 
     def to_dict(self):
