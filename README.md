@@ -1,20 +1,12 @@
-# Create the database model for Instagram
+[![SQL](https://hakin9.org/wp-content/uploads/2019/08/connect-a-flask-app-to-a-mysql-database-with-sqlalchemy-and-pymysql.jpg "SQL")](https://hakin9.org/wp-content/uploads/2019/08/connect-a-flask-app-to-a-mysql-database-with-sqlalchemy-and-pymysql.jpg "SQL")
 
-**Important**: To do this activity you need to `fork` this repo into your **Github** account and then open the forked repo on Gitpod.
+# Instagram database
 
-Inside he `src/models.py` file you will find a couple of classes describing an example database.
+- For this exercise we use SQLAlchemy to create a model of an Instagram Database. 
+- It is an exercise made for academic purposes as a part of 4Geeks Academy coding bootcamp.
+- Feel free to contribute. 
 
-Here is a 4min video explaining what UML is: [https://www.youtube.com/watch?v=UI6lqHOVHic](https://www.youtube.com/watch?v=UI6lqHOVHic)
-
-We are going to be creating the Entity Relationship Diagram for Instagram Database, a very similar diagram to this one:
-
-![Instagram Diagram](https://github.com/breatheco-de/exercise-instagram-data-modeling/blob/master/assets/example.png?raw=true)
-[Click to open diagram](https://app.quickdatabasediagrams.com/#/d/LxNXQZ)
-
-> 🔥 You can use this FREE tool to practice your diagram for the first time: https://app.quickdatabasediagrams.com/#/d/
-
-
-## 💻 Installation
+## Instalation Guide
 
 1. Get inside the environment `$ pipenv shell`
 
@@ -23,17 +15,3 @@ We are going to be creating the Entity Relationship Diagram for Instagram Databa
 3. Generate de diagram as many times as you need `$ python src/models.py`
 
 4. Open the file `diagram.png` to check out your UML diagram!
-
-
-## 📝Instructions
-
-Your Job is to update the `src/models.py` file with the code needed to replicate the instagram data model.
-
-The project is using the SQLAlchemy Python library to generate the database.
-
-- What tables do you think instagram might have on its database: E.g: Post, User, etc.?
-- What properties should go inside the user? or inside the Post table?
-- Please add at least 4 models with all of its properties.
-- Degenerate the diagram.png file at the end by running `$ python3 models.py` on the console.
-
-

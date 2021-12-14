@@ -8,23 +8,41 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
-class Person(Base):
-    __tablename__ = 'person'
-    # Here we define columns for the table person
-    # Notice that each column is also a normal Python instance attribute.
+class User(Base):
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
+    username = Column(String(250), nullable=False)
+    first_name = Column(String(200), nullable=False)
+    last_name = Column(String(200), nullable=False)
+    email = Column(String, nullable=False, unique=True)
+    password = Column(String, nullable=False, unique=True)
+    bio = Column(String(250), nullable=True)
 
-class Address(Base):
-    __tablename__ = 'address'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
+class Post(Base):
+    __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
-    street_name = Column(String(250))
-    street_number = Column(String(250))
-    post_code = Column(String(250), nullable=False)
-    person_id = Column(Integer, ForeignKey('person.id'))
-    person = relationship(Person)
+    caption = Column(String(250))
+    location = Column(String(250))
+    date = Column(String(250), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
+
+class Story(Base):
+    __tablename__ = 'stories'
+    id = Column(Integer, primary_key=True)
+    duration = Column(String(250))
+    date = Column(String(250), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
+
+class Location(Base):
+    __tablename__ = 'location'
+    id = Column(Integer, primary_key=True)
+    address = Column(String(250))
+    city = Column(String(250))
+    number_of_posts = Column(Integer)
+    user_id = Column(Integer, ForeignKey('post.id'))
+    post = relationship(Post)
 
     def to_dict(self):
         return {}
